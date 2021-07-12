@@ -10,11 +10,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.7'
-      shell: bash
-        
     - name: install virtualenv
       run: pip3 install virtualenv
       shell: bash
