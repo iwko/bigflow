@@ -9,7 +9,7 @@ An example of using actions in a workflow:
 ```yaml
 ...
 steps:
-  - uses: allegro-actions/bigflow/setup@master
+  - uses: allegro-actions/bigflow/setup@main
     with:
       release_sshkey: '<SSH_KEY>'
 ...
