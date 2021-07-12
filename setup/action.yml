@@ -9,6 +9,9 @@ inputs:
 
 runs:
   using: "composite"
+  defaults:
+      run:
+        shell: bash
   steps:
     - name: install virtualenv
       run: pip3 install virtualenv
