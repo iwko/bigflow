@@ -24,10 +24,10 @@ runs:
     - run: pip install -r resources/requirements.txt
       shell: bash
 
-    - run: echo python buildenv/bin/bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
+    - run: echo python ./buildenv/bin/bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
       shell: bash
       
-    - run: python buildenv/bin/bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
+    - run: python ./buildenv/bin/bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
       shell: bash
       
     - run: rm -r buildenv
