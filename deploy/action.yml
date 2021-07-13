@@ -1,1 +1,39 @@
+name: "deploy-bigflow"
+description: "Automating build after code changes"
+author: chi
 
+inputs:
+  bf_env: 
+    description: "Deployment environment"      
+    required: true
+    default: "dev"
+  bf_vault_secret:
+    description: "Vault secret"
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Set dev environment
+      if: ${{ inputs.bf_env == 'dev' || inputs.bf_env == 'all' }}
+      run: export bf_env = 'dev'
+      shell: bash
+      
+    - name: deploy dev
+      if: ${{ inputs.bf_env == 'dev' || inputs.bf_env == 'all' }}
+      run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
+      shell: bash
+      
+    - name: Set prod environment
+      if: ${{ inputs.bf_env == 'prod' || inputs.bf_env == 'all' }}
+      run: export bf_env = 'prod'
+      shell: bash
+        
+    - name: deploy prod
+      if: ${{ inputs.bf_env == 'prod' || inputs.bf_env == 'all' }}
+      run: $GITHUB_ACTION_PATH/deploy.sh ${{secrets.bf_vault_secret}}
+      shell: bash
+    
+branding:
+  icon: refresh-cw
+  color: green
