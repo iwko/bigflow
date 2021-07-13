@@ -2,10 +2,10 @@ name: "setup-bigflow"
 description: "Automating build after code changes"
 author: chi
 
-inputs:
-  release_sshkey:  # id of input
-    description: 'Release key'
-    required: true
+# inputs:
+#   release_sshkey:  # id of input
+#     description: 'Release key'
+#     required: true
 
 runs:
   using: "composite"
@@ -30,13 +30,13 @@ runs:
       run: chmod +rx deploy.sh
       shell: bash
 
-    - name: copy release key
-      run: echo ${{inputs.release_sshkey}} > repositoryKey.pem
-      shell: bash
+#     - name: copy release key
+#       run: echo ${{inputs.release_sshkey}} > repositoryKey.pem
+#       shell: bash
 
-    - name: change permissions
-      run: chmod og-r repositoryKey.pem
-      shell: bash
+#     - name: change permissions
+#       run: chmod og-r repositoryKey.pem
+#       shell: bash
 
 branding:
   icon: refresh-cw
