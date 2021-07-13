@@ -4,13 +4,20 @@
 
 An example of using actions in a workflow:
 
-### ci
+### setup environment
 
 ```yaml
 ...
 steps:
   - uses: allegro-actions/bigflow/setup@main
-    with:
-      release_sshkey: '<SSH_KEY>'
+...
+```
+
+### build
+
+```yaml
+...
+steps:
+  - uses: allegro-actions/bigflow/build@main
 ...
 ```
