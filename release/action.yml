@@ -11,6 +11,9 @@ inputs:
     description: "Workflow that should be run"    
     required: true
     default: "ALL"
+  repository_url: 
+    description: "Repository URL"    
+    required: true
 
 runs:
   using: "composite"
