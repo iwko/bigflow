@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-cat resources/requirements.txt
 pip install -r resources/requirements.txt
 
 git remote set-url origin $1
@@ -19,8 +18,8 @@ if [ -n "$3" ]; then
     args_array+=("--workflow" "$workflow_id")
 fi
 
-echo "python buildenv/bin/bf build ${args_array[@]}"
-python buildenv/bin/bf build "${args_array[@]}"
+echo "bf build ${args_array[@]}"
+python "bf build "${args_array[@]}"
 
 [ -d ".image" ] && image_dir=".image" || image_dir="image"
 [ -d ".dags" ] && dags_dir=".dags" || dags_dir="dags"
