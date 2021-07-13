@@ -36,7 +36,7 @@ runs:
     - run: $([ -d ".dags" ]) && dags_dir=".dags" || dags_dir="dags"
       shell: bash
 
-    - run: pip freeze | grep '^bigflow' | sed 's/bigflow==//' > "$image_dir/bigflow_version.txt"
+    - run: echo ` pip freeze | grep '^bigflow' | sed 's/bigflow==//'` > "$image_dir/bigflow_version.txt"
       shell: bash
 
     - run: echo "version=$releaseVersion" > variables.txt
