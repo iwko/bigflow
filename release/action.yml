@@ -30,10 +30,10 @@ runs:
     - run: bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
       shell: bash
       
-    - run: `[ -d ".image" ]` && image_dir=".image" || image_dir="image"
+    - run: $([ -d ".image" ]) && image_dir=".image" || image_dir="image"
       shell: bash
 
-    - run: `[ -d ".dags" ]` && dags_dir=".dags" || dags_dir="dags"
+    - run: $([ -d ".dags" ]) && dags_dir=".dags" || dags_dir="dags"
       shell: bash
 
     - run: pip freeze | grep '^bigflow' | sed 's/bigflow==//' > "$image_dir/bigflow_version.txt"
