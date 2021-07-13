@@ -20,6 +20,9 @@ runs:
     - run: export "bf_env=${{inputs.bf_env}}"
       shell: bash
       
+    - run: export "bf_vault_secret=${{inputs.bf_vault_secret}}"
+      shell: bash
+      
     - run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
       shell: bash
     
