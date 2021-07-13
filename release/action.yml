@@ -15,42 +15,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: pip install -r resources/requirements.txt
+    - run: chmod +x $GITHUB_ACTION_PATH/build.sh
       shell: bash
       
-    - run: python -c 'import bamboo_build;bamboo_build.release_version_if_on_master()'
+    - run: $GITHUB_ACTION_PATH/build.sh ${{inputs.repository_url}} ${{inputs.bf_start_time}} ${{inputs.bf_workflow_id}}
       shell: bash
-      
-    - run: releaseVersion=$(python -c 'import bamboo_build;bamboo_build.get_bamboo_release_version()')
-      shell: bash
-
-    - run: echo bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
-      shell: bash
-      
-    - run: bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
-      shell: bash
-      
-    - run: $([ -d ".image" ]) && image_dir=".image" || image_dir="image"
-      shell: bash
-
-    - run: $([ -d ".dags" ]) && dags_dir=".dags" || dags_dir="dags"
-      shell: bash
-       
-    - run: chmod +rwx $image_dir
-      shell: bash
-
-    - run: echo ` pip freeze | grep '^bigflow' | sed 's/bigflow==//'` > "$image_dir/bigflow_version.txt"
-      shell: bash
-      
-    - run: chmod +rwx ./
-      shell: bash
-
-    - run: echo "version=$releaseVersion" > variables.txt
-      shell: bash
-
-    - run: if [ -n "$workflow_id" ]; then echo "$workflow_id" >> $dags_dir/workflow_id.txt fi
-      shell: bash
-
+    
 branding:
   icon: refresh-cw
   color: green
