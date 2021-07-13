@@ -34,7 +34,7 @@ runs:
         
     - name: deploy prod
       if: ${{ inputs.bf_env == 'prod' || inputs.bf_env == 'all' }}
-      run: $GITHUB_ACTION_PATH/deploy.sh ${{secrets.bf_vault_secret}}
+      run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
       shell: bash
     
 branding:
