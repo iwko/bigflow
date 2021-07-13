@@ -14,6 +14,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - run: chmod +x $GITHUB_ACTION_PATH/deploy.sh
+      shell: bash 
+      
     - name: Set dev environment
       if: ${{ inputs.bf_env == 'dev' || inputs.bf_env == 'all' }}
       run: export bf_env = 'dev'
