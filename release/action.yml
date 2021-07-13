@@ -18,7 +18,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: $GITHUB_ACTION_PATH/build.sh ${{repository_url}} ${{inputs.bf_start_time}} ${{inputs.bf_workflow_id}}
+    - run: $GITHUB_ACTION_PATH/build.sh ${{inputs.repository_url}} ${{inputs.bf_start_time}} ${{inputs.bf_workflow_id}}
       shell: bash
 
 branding:
