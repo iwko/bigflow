@@ -15,12 +15,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-#     - run: virtualenv -p python3.7 buildenv
-#       shell: bash
-
-#     - run: source buildenv/bin/activate
-#       shell: bash
-
     - run: pip install -r resources/requirements.txt
       shell: bash
 
@@ -29,9 +23,6 @@ runs:
       
     - run: bf build --start-time ${{inputs.bf_start_time}} --workflow ${{inputs.bf_workflow_id}}
       shell: bash
-      
-#     - run: rm -r buildenv
-#       shell: bash
 
 branding:
   icon: refresh-cw
