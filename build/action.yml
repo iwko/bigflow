@@ -23,32 +23,11 @@ runs:
 
     - run: pip install -r resources/requirements.txt
       shell: bash
-      
-    - run: python -c 'import bamboo_build;bamboo_build.release_version_if_on_master()'
-      shell: bash
-      
-    - run: releaseVersion=$(python -c 'import bamboo_build;bamboo_build.get_bamboo_release_version()')
-      shell: bash
 
     - run: echo "python buildenv/bin/bf build --start-time ${inputs.bf_start_time} --workflow ${inputs.bf_workflow_id}"
       shell: bash
       
     - run: python buildenv/bin/bf build --start-time ${inputs.bf_start_time} --workflow ${inputs.bf_workflow_id}
-      shell: bash
-
-    - run: [ -d ".image" ] && image_dir=".image" || image_dir="image"
-      shell: bash
-
-    - run: [ -d ".dags" ] && image_dir=".dags" || image_dir="dags"
-      shell: bash
-
-    - run: pip freeze | grep '^bigflow' | sed 's/bigflow==//' > "$image_dir/bigflow_version.txt"
-      shell: bash
-      
-    - run: echo "version=$releaseVersion" > variables.txt
-      shell: bash
-      
-    - run: if [ -n "$workflow_id" ]; then echo "$workflow_id" >> $dags_dir/workflow_id.txt fi
       shell: bash
       
     - run: rm -r buildenv
