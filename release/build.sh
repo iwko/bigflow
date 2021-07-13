@@ -19,7 +19,7 @@ if [ -n "$3" ]; then
 fi
 
 echo "bf build ${args_array[@]}"
-python "bf build "${args_array[@]}"
+bf build "${args_array[@]}"
 
 [ -d ".image" ] && image_dir=".image" || image_dir="image"
 [ -d ".dags" ] && dags_dir=".dags" || dags_dir="dags"
