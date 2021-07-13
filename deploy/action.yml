@@ -17,24 +17,10 @@ runs:
     - run: chmod +x $GITHUB_ACTION_PATH/deploy.sh
       shell: bash 
       
-    - name: Set dev environment
-      if: ${{ inputs.bf_env == 'dev' || inputs.bf_env == 'all' }}
-      run: export bf_env = 'dev'
+    - run: export bf_env = ${{ inputs.bf_env }}
       shell: bash
       
-    - name: deploy dev
-      if: ${{ inputs.bf_env == 'dev' || inputs.bf_env == 'all' }}
-      run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
-      shell: bash
-      
-    - name: Set prod environment
-      if: ${{ inputs.bf_env == 'prod' || inputs.bf_env == 'all' }}
-      run: export bf_env = 'prod'
-      shell: bash
-        
-    - name: deploy prod
-      if: ${{ inputs.bf_env == 'prod' || inputs.bf_env == 'all' }}
-      run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
+    - run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
       shell: bash
     
 branding:
