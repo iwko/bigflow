@@ -37,7 +37,7 @@ runs:
       shell: bash
        
     - run: chmod +rwx $image_dir
-      sell: bash
+      shell: bash
 
     - run: echo ` pip freeze | grep '^bigflow' | sed 's/bigflow==//'` > "$image_dir/bigflow_version.txt"
       shell: bash
