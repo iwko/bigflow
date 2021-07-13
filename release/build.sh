@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+cat resources/requirements.txt
 pip install -r resources/requirements.txt
 
 git remote set-url origin $1
