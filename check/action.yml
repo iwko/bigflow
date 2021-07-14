@@ -1,5 +1,5 @@
-name: "build-bigflow"
-description: "Automating build after code changes"
+name: "check-bigflow"
+description: "Automating check after code changes"
 author: chi
 
 inputs:
