@@ -13,19 +13,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: export "bf_env=${{inputs.bf_env}}"
-      shell: bash
-
-    - run: export "bf_vault_secret=${{inputs.bf_vault_secret}}"
-      shell: bash
-
     - run: chmod +x $GITHUB_ACTION_PATH/deploy.sh
       shell: bash 
 
     - run: $GITHUB_ACTION_PATH/deploy.sh ${{inputs.bf_vault_secret}}
       env: 
-        bf_vault_secret: ${{inputs.bf_env}}
-        bf_env: ${{inputs.bf_vault_secret}}
+        bf_vault_secret: ${{inputs.bf_vault_secret}}
+        bf_env: ${{inputs.bf_env}}
       shell: bash
     
 branding:
