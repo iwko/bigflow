@@ -1,5 +1,5 @@
 name: "build-bigflow"
-description: "Automating build after code changes"
+description: "Automating build and release after code changes"
 author: chi
 
 inputs:
@@ -25,6 +25,12 @@ runs:
       shell: bash
     
     - run: chmod +rx variables.txt
+      shell: bash
+
+    - run: cp $GITHUB_ACTION_PATH/bamboo_build.py ./bamboo_build.py
+      shell: bash
+
+    - run: chmod +rx bamboo_build.py
       shell: bash
       
     - run: while read line; do export $line; done < variables.txt
