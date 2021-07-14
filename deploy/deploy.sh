@@ -25,9 +25,12 @@ else
     echo "Deploy only $workflow_id"
 fi
 
+echo "bf_env is equal to $bf_env"
+
 bf deploy \
     --image-tar-path "$image_dir/$image_name" \
     --deployment-config-path "$image_dir/deployment_config.py" \
     --auth-method vault \
     --vault-secret "$1" \
+    --config "$bf_env" \
     "${deploy_args[@]}"
