@@ -21,12 +21,6 @@ runs:
     - run: chmod +x $GITHUB_ACTION_PATH/build.sh
       shell: bash
       
-    - run: $GITHUB_ACTION_PATH/build.sh ${{inputs.repository_url}} ${{inputs.bf_start_time}} ${{inputs.bf_workflow_id}}
-      shell: bash
-    
-    - run: chmod +rx variables.txt
-      shell: bash
-
     - run: cp $GITHUB_ACTION_PATH/bamboo_build.py ./bamboo_build.py
       shell: bash
       
@@ -37,6 +31,12 @@ runs:
       shell: bash
 
     - run: chmod +rx bamboo_build.py
+      shell: bash
+      
+    - run: $GITHUB_ACTION_PATH/build.sh ${{inputs.repository_url}} ${{inputs.bf_start_time}} ${{inputs.bf_workflow_id}}
+      shell: bash
+    
+    - run: chmod +rx variables.txt
       shell: bash
       
     - run: while read line; do export $line; done < variables.txt
