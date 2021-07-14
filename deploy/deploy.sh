@@ -29,5 +29,5 @@ bf deploy \
     --image-tar-path "$image_dir/$image_name" \
     --deployment-config-path "$image_dir/deployment_config.py" \
     --auth-method vault \
-    --vault-secret "$1"
+    --vault-secret "$1" \
     "${deploy_args[@]}"
