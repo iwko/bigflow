@@ -29,6 +29,12 @@ runs:
 
     - run: cp $GITHUB_ACTION_PATH/bamboo_build.py ./bamboo_build.py
       shell: bash
+      
+    - run: pwd
+      shell: bash
+      
+    - run: ls
+      shell: bash
 
     - run: chmod +rx bamboo_build.py
       shell: bash
