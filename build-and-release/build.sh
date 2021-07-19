@@ -28,6 +28,7 @@ pip freeze | grep '^bigflow' | sed 's/bigflow==//' > "$image_dir/bigflow_version
 echo "version=$releaseVersion" > variables.txt
 
 if [ -n "$workflow_id" ]; then
+    chmod +wx .dags/
     # TODO: Remove after such logic (generate metadata about builded dags) is integrated into `bigflow`.
     echo "$workflow_id" >> $dags_dir/workflow_id.txt
 fi
